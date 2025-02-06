@@ -8,3 +8,4 @@ theme = "anatole"
   description = "A personal documentation website"
   enableEmoji = true
   profilePicture = "images/profile.jpg"
+# Trigger new deployment
