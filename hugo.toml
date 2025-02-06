@@ -1,0 +1,10 @@
+baseURL = "https://calabiyau19.github.io/my-doc-website/"
+languageCode = "en-us"
+title = "My Doc Website"
+theme = "anatole"
+
+[params]
+  author = "calabiyau19"
+  description = "A personal documentation website"
+  enableEmoji = true
+  profilePicture = "images/profile.jpg"
