@@ -10,3 +10,4 @@ theme = "anatole"
   profilePicture = "images/profile.jpg"
 # Trigger new deployment
 # Trigger new deployment attempt
+# Trigger new deployment after permission fix
