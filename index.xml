@@ -1,2 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>My Doc Website</title><link>https://calabiyau19.github.io/my-doc-website/</link><description>Recent content on My Doc Website</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 06 Feb 2025 09:38:19 -0500</lastBuildDate><atom:link href="https://calabiyau19.github.io/my-doc-website/index.xml" rel="self" type="application/rss+xml"/><item><title>My First Post</title><link>https://calabiyau19.github.io/my-doc-website/blog/my-first-post/</link><pubDate>Thu, 06 Feb 2025 09:38:19 -0500</pubDate><guid>https://calabiyau19.github.io/my-doc-website/blog/my-first-post/</guid><description>&lt;h1 id="welcome-to-my-blog">Welcome to My Blog&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>My Doc Website</title><link>https://calabiyau19.github.io/my-doc-website/</link><description>Recent content on My Doc Website</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 06 Feb 2025 21:50:45 -0500</lastBuildDate><atom:link href="https://calabiyau19.github.io/my-doc-website/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo Install 1</title><link>https://calabiyau19.github.io/my-doc-website/blog/hugo-install-1/</link><pubDate>Thu, 06 Feb 2025 21:50:45 -0500</pubDate><guid>https://calabiyau19.github.io/my-doc-website/blog/hugo-install-1/</guid><description>&lt;p>+++markdown&lt;/p>
+&lt;p>How to Set Up a Hugo Website with GitHub Actions and GitHub Pages
+A step-by-step guide to deploying a static Hugo site with full CI/CD using GitHub Actions.&lt;/p>
+&lt;p>Prerequisites
+A GitHub account
+A Linux machine (tested on Xubuntu Minimal)
+Basic knowledge of the command line
+Step 1: Remove Any Previous Setup
+sh
+Copy
+Edit
+rm -rf ~/my-doc-website
+Then, delete any existing GitHub repository for the project.&lt;/p>
+&lt;p>Step 2: Create a New GitHub Repository
+Go to GitHub, create a new repository named &amp;ldquo;my-doc-website&amp;rdquo;.&lt;/p></description></item><item><title>My First Post</title><link>https://calabiyau19.github.io/my-doc-website/blog/my-first-post/</link><pubDate>Thu, 06 Feb 2025 09:38:19 -0500</pubDate><guid>https://calabiyau19.github.io/my-doc-website/blog/my-first-post/</guid><description>&lt;h1 id="welcome-to-my-blog">Welcome to My Blog&lt;/h1>
 &lt;p>This is my first post using Hugo! 🚀&lt;/p></description></item></channel></rss>
