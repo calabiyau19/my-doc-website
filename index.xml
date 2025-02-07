@@ -1,16 +1,260 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>My Doc Website</title><link>https://calabiyau19.github.io/my-doc-website/</link><description>Recent content on My Doc Website</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 06 Feb 2025 21:50:45 -0500</lastBuildDate><atom:link href="https://calabiyau19.github.io/my-doc-website/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo Install 1</title><link>https://calabiyau19.github.io/my-doc-website/blog/hugo-install-1/</link><pubDate>Thu, 06 Feb 2025 21:50:45 -0500</pubDate><guid>https://calabiyau19.github.io/my-doc-website/blog/hugo-install-1/</guid><description>&lt;p>+++markdown&lt;/p>
-&lt;p>How to Set Up a Hugo Website with GitHub Actions and GitHub Pages
-A step-by-step guide to deploying a static Hugo site with full CI/CD using GitHub Actions.&lt;/p>
-&lt;p>Prerequisites
-A GitHub account
-A Linux machine (tested on Xubuntu Minimal)
-Basic knowledge of the command line
-Step 1: Remove Any Previous Setup
-sh
-Copy
-Edit
-rm -rf ~/my-doc-website
-Then, delete any existing GitHub repository for the project.&lt;/p>
-&lt;p>Step 2: Create a New GitHub Repository
-Go to GitHub, create a new repository named &amp;ldquo;my-doc-website&amp;rdquo;.&lt;/p></description></item><item><title>My First Post</title><link>https://calabiyau19.github.io/my-doc-website/blog/my-first-post/</link><pubDate>Thu, 06 Feb 2025 09:38:19 -0500</pubDate><guid>https://calabiyau19.github.io/my-doc-website/blog/my-first-post/</guid><description>&lt;h1 id="welcome-to-my-blog">Welcome to My Blog&lt;/h1>
-&lt;p>This is my first post using Hugo! 🚀&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>My Doc Website</title><link>https://calabiyau19.github.io/my-doc-website/</link><description>Recent content on My Doc Website</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 06 Feb 2025 09:38:19 -0500</lastBuildDate><atom:link href="https://calabiyau19.github.io/my-doc-website/index.xml" rel="self" type="application/rss+xml"/><item><title>My First Post</title><link>https://calabiyau19.github.io/my-doc-website/blog/my-first-post/</link><pubDate>Thu, 06 Feb 2025 09:38:19 -0500</pubDate><guid>https://calabiyau19.github.io/my-doc-website/blog/my-first-post/</guid><description>&lt;h1 id="welcome-to-my-blog">Welcome to My Blog&lt;/h1>
+&lt;p>This is my first post using Hugo! 🚀&lt;/p></description></item><item><title>Hugo + GitHub Pages + CI/CD: A Complete Guide</title><link>https://calabiyau19.github.io/my-doc-website/blog/hugo-github-setup/</link><pubDate>Thu, 06 Feb 2025 12:00:00 +0000</pubDate><guid>https://calabiyau19.github.io/my-doc-website/blog/hugo-github-setup/</guid><description>&lt;h1 id="-hugo--github-pages--cicd-a-complete-guide">🚀 Hugo + GitHub Pages + CI/CD: A Complete Guide&lt;/h1>
+&lt;p>This guide walks you through &lt;strong>setting up Hugo&lt;/strong>, &lt;strong>deploying to GitHub Pages&lt;/strong>, and &lt;strong>automating deployment with GitHub Actions&lt;/strong>.&lt;/p>
+&lt;h2 id="-prerequisites">📌 Prerequisites&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>OS&lt;/strong>: Xubuntu Minimal (on LPT-DELL)&lt;/li>
+&lt;li>&lt;strong>GitHub Account&lt;/strong>: &lt;code>calabiyau19&lt;/code>&lt;/li>
+&lt;li>&lt;strong>Project Name&lt;/strong>: &lt;code>my-doc-website&lt;/code>&lt;/li>
+&lt;li>&lt;strong>Local Directory&lt;/strong>: &lt;code>/home/mark/my-doc-website&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="-step-1-start-fresh-delete-old-files--repo">🛠 Step 1: Start Fresh (Delete Old Files &amp;amp; Repo)&lt;/h2>
+&lt;h3 id="11-delete-local-hugo-project">&lt;strong>1.1 Delete Local Hugo Project&lt;/strong>&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>rm -rf ~/my-doc-website
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ls ~/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>1.2 Delete GitHub Repository
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Go to GitHub.com → Log in
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Navigate to Repositories → Find my-doc-website
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Click Settings → Scroll down to Delete this repository
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Confirm deletion
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>📦 Step 2: Create a New GitHub Repository
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Go to GitHub.com → Click + → New repository
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Name it: my-doc-website
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Set it as Public
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Check &lt;span style="color:#e6db74">&amp;#34;Add a README file&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Click Create repository
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>💻 Step 3: Clone Repository to Local Machine
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd /home/mark
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone https://github.com/calabiyau19/my-doc-website.git
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd my-doc-website
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>📥 Step 4: Install Necessary Software
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>4.1 Update the System
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt update &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> sudo apt upgrade -y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>4.2 Install Git
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Check &lt;span style="color:#66d9ef">if&lt;/span> Git is installed:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git --version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>If not installed:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt install git -y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>🚀 Step 5: Install Hugo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd /home/mark
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo dpkg -i hugo_extended_0.143.1_linux-amd64.deb
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>📂 Step 6: Initialize Hugo Site
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd /home/mark/my-doc-website
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo new site . --force
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ls -l
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>🎨 Step 7: Install and Configure a Hugo Theme
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>7.1 Add the Theme
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git submodule add https://github.com/lxndrblz/anatole.git themes/anatole
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ls themes
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>7.2 Configure Hugo &lt;span style="color:#f92672">(&lt;/span>hugo.toml&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nano hugo.toml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Paste this:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>toml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>baseURL &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;https://calabiyau19.github.io/my-doc-website/&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>languageCode &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;en-us&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>title &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;My Doc Website&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>theme &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;anatole&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>params&lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> author &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;calabiyau19&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> description &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;A personal documentation website&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> enableEmoji &lt;span style="color:#f92672">=&lt;/span> true
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Save &amp;amp; Exit: CTRL+X → Y → ENTER
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>🖼 Step 8: Add a Profile Picture
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>8.1 Move Image to Static Folder
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir -p static/images
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cp /path/to/your-image.jpg static/images/profile.jpg
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ls static/images/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>8.2 Update hugo.toml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nano hugo.toml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Add this line:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>toml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>profilePicture &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;images/profile.jpg&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Save &amp;amp; Exit.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>🔍 Step 9: Run Hugo Locally
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo server -D
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Visit:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>👉 http://localhost:1313/my-doc-website/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>📝 Step 10: Add a First Blog Post
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>10.1 Create the Post
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo new blog/my-first-post.md
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>10.2 Edit the Post
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nano content/blog/my-first-post.md
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Modify:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>md
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>---
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>title: &lt;span style="color:#e6db74">&amp;#34;My First Post&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>date: 2025-02-06T12:00:00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>draft: false
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>---
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Welcome to My Blog&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>This is my first post using Hugo! 🚀
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Save &amp;amp; Exit.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>10.3 Restart Hugo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo server -D
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Verify the post is visible.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>💾 Step 11: Commit Changes to Git
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git add .
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &lt;span style="color:#e6db74">&amp;#34;Initial Hugo setup with first blog post and profile picture&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git push origin main
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>🔑 Step 12: Set Up SSH Authentication
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>12.1 Generate SSH Key
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ssh-keygen -t rsa -b &lt;span style="color:#ae81ff">4096&lt;/span> -C &lt;span style="color:#e6db74">&amp;#34;your-email@example.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Press ENTER to accept defaults.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>12.2 Add Key to GitHub
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cat ~/.ssh/id_rsa.pub
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy the output → GitHub Settings → SSH Keys → Add New Key
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>12.3 Update Git Remote
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git remote set-url origin git@github.com:calabiyau19/my-doc-website.git
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>🚀 Step 13: Enable GitHub Pages
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>GitHub Repository → Settings
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Click Pages &lt;span style="color:#f92672">(&lt;/span>left menu&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Change Branch to gh-pages → Save
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>🤖 Step 14: Set Up GitHub Actions &lt;span style="color:#f92672">(&lt;/span>CI/CD&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>14.1 Create Workflow File
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir -p .github/workflows
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nano .github/workflows/deploy.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Paste:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yaml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>name: Deploy Hugo Site
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>on:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> push:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> branches:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - main
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>jobs:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> build-deploy:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> runs-on: ubuntu-latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> steps:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - name: Checkout Repository
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> uses: actions/checkout@v4
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> with:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> submodules: true
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> fetch-depth: &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - name: Install Hugo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> uses: peaceiris/actions-hugo@v3
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> with:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> hugo-version: &lt;span style="color:#e6db74">&amp;#34;latest&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> extended: true
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - name: Build Site
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> run: hugo --minify
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - name: Deploy to GitHub Pages
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> uses: peaceiris/actions-gh-pages@v4
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> with:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> github_token: &lt;span style="color:#e6db74">${&lt;/span>{ secrets.GITHUB_TOKEN &lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> publish_dir: ./public
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> publish_branch: gh-pages
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Save &amp;amp; Exit.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>14.2 Commit &amp;amp; Push Workflow
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Edit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git add .github/workflows/deploy.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &lt;span style="color:#e6db74">&amp;#34;Add GitHub Actions workflow&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git push origin main
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>🌍 Step 15: Verify Deployment
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Check GitHub Actions:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>👉 GitHub Repository → Actions
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Visit Your Live Site:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>👉 https://calabiyau19.github.io/my-doc-website/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>🎉 Done! Your site is now live! 🚀
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Hugo + GitHub Pages + CI/CD: A Complete Guide</title><link>https://calabiyau19.github.io/my-doc-website/blog/hugo-github-setup_vsc/</link><pubDate>Thu, 06 Feb 2025 12:00:00 +0000</pubDate><guid>https://calabiyau19.github.io/my-doc-website/blog/hugo-github-setup_vsc/</guid><description>&lt;h1 id="-hugo--github-pages--cicd-a-complete-guide">🚀 Hugo + GitHub Pages + CI/CD: A Complete Guide&lt;/h1>
+&lt;p>This guide walks you through &lt;strong>setting up Hugo&lt;/strong>, &lt;strong>deploying to GitHub Pages&lt;/strong>, and &lt;strong>automating deployment with GitHub Actions&lt;/strong>.&lt;/p>
+&lt;h2 id="-prerequisites">📌 Prerequisites&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>OS&lt;/strong>: Xubuntu Minimal (on LPT-DELL)&lt;/li>
+&lt;li>&lt;strong>GitHub Account&lt;/strong>: &lt;code>calabiyau19&lt;/code>&lt;/li>
+&lt;li>&lt;strong>Project Name&lt;/strong>: &lt;code>my-doc-website&lt;/code>&lt;/li>
+&lt;li>&lt;strong>Local Directory&lt;/strong>: &lt;code>/home/mark/my-doc-website&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="-step-1-start-fresh">🛠 Step 1: Start Fresh&lt;/h2>
+&lt;p>Before setting up Hugo, we need to &lt;strong>delete any old files and repositories&lt;/strong> from a previous attempt.&lt;/p>
+&lt;h3 id="11-delete-the-local-hugo-project">&lt;strong>1.1 Delete the Local Hugo Project&lt;/strong>&lt;/h3>
+&lt;p>Run the following command on LPT-DELL to remove the old project directory:&lt;/p></description></item></channel></rss>
