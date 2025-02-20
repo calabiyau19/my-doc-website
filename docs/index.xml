@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docs on My Document Website</title>
+    <link>http://localhost:1313/docs/</link>
+    <description>Recent content in Docs on My Document Website</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 18 Feb 2025 13:30:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Welcome</title>
+      <link>http://localhost:1313/docs/welcome/</link>
+      <pubDate>Wed, 05 Feb 2025 12:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/welcome/</guid>
+      <description>&lt;h1 id=&#34;welcome-to-my-linux-learning-hub&#34;&gt;&lt;strong&gt;Welcome to My Linux Learning Hub&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;Welcome to my little corner of the web, built using Hugo with the Lotus Docs theme. But while this site runs on Hugo, it’s not just about Hugo—it’s about Linux, open-source tools, and the journey of learning. If you’re new to Linux, you’re in the right place.&lt;/p&gt;&#xA;&lt;h2 id=&#34;how-this-site-started&#34;&gt;&lt;strong&gt;How This Site Started&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Like many beginners, I found Linux exciting but sometimes overwhelming. I’d tinker, break things, fix them (or try to), and take notes along the way. I started using Hugo, a powerful static site generator, to document my learning process, but my first attempt was frustrating. I picked a theme that was too complex for a beginner, and I quickly hit a wall.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Build a Better Bash with Atuin</title>
+      <link>http://localhost:1313/docs/add-bash-completion-atuin-bash-extras-new-vms/</link>
+      <pubDate>Tue, 18 Feb 2025 13:30:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/add-bash-completion-atuin-bash-extras-new-vms/</guid>
+      <description>&lt;h3 id=&#34;step-by-step-plan-for-setting-up-bash-completion-and-atuin-in-new-vms&#34;&gt;&lt;strong&gt;Step-by-Step Plan for Setting Up Bash Completion and Atuin in New VMs&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;This guide will ensure that every new Ubuntu Server VM you set up has &lt;strong&gt;bash completion&lt;/strong&gt; for tab completion and &lt;strong&gt;Atuin&lt;/strong&gt; for enhanced shell history.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;step-1-update-the-system&#34;&gt;&lt;strong&gt;Step 1: Update the System&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Before installing anything, update and upgrade all packages.&lt;/p&gt;&#xA;&lt;p&gt;bash&lt;br&gt;&#xA;enter&lt;br&gt;&#xA;&lt;code&gt;sudo apt update &amp;amp;&amp;amp; sudo apt upgrade -y&lt;/code&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;step-2-install-required-tools&#34;&gt;&lt;strong&gt;Step 2: Install Required Tools&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Since Ubuntu Server doesn’t include some essential tools by default, install the following:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How to Auto Update Docker Apps With Watchtower</title>
+      <link>http://localhost:1313/docs/docker-compose-watchtower-install/</link>
+      <pubDate>Tue, 18 Feb 2025 12:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/docker-compose-watchtower-install/</guid>
+      <description>&lt;h4 id=&#34;step-by-step-guide-to-install-docker-docker-compose-watchtower-on-ubuntu-server-2404&#34;&gt;&lt;strong&gt;Step-by-Step Guide to Install Docker, Docker Compose, Watchtower on Ubuntu Server 24.04&lt;/strong&gt;&lt;/h4&gt;&#xA;&lt;p&gt;This guide ensures you install the latest &lt;strong&gt;Docker Engine&lt;/strong&gt; and &lt;strong&gt;Docker Compose&lt;/strong&gt; on &lt;strong&gt;Ubuntu Server 24.04 (Noble)&lt;/strong&gt;, using the official Docker repositories.  As a bonus, it also includes directions to install Watchtower which will help keep your docker contained applications updated automatically and send you a notification via ntfy if updates occur&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;step-1-update-the-system&#34;&gt;&lt;strong&gt;Step 1: Update the System&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Ensure your system is up to date before installing any packages:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How to Build Hugo Website</title>
+      <link>http://localhost:1313/docs/hugo-website-with-actions-and-pages/</link>
+      <pubDate>Tue, 18 Feb 2025 12:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/hugo-website-with-actions-and-pages/</guid>
+      <description>&lt;h4 id=&#34;a-step-by-step-guide-to-deploying-a-static-hugo-site-with-full-cicd-using-github-actions-and-pages&#34;&gt;A step-by-step guide to deploying a static Hugo site with full CI/CD using GitHub Actions and Pages&lt;/h4&gt;&#xA;&lt;h3 id=&#34;prerequisites&#34;&gt;&lt;strong&gt;Prerequisites&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A GitHub account&lt;/li&gt;&#xA;&lt;li&gt;A Linux machine (tested on Xubuntu Minimal)&lt;/li&gt;&#xA;&lt;li&gt;Basic knowledge of the command line&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;step-1-remove-any-previous-setup&#34;&gt;&lt;strong&gt;Step 1: Remove Any Previous Setup&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;sh&lt;br&gt;&#xA;CopyEdit&lt;br&gt;&#xA;&lt;code&gt;rm -rf ~/my-doc-website&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;Then, delete any existing GitHub repository for the project.&lt;/p&gt;&#xA;&lt;h3 id=&#34;step-2-create-a-new-github-repository&#34;&gt;&lt;strong&gt;Step 2: Create a New GitHub Repository&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Go to GitHub, create a new repository named &lt;strong&gt;my-doc-website&lt;/strong&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

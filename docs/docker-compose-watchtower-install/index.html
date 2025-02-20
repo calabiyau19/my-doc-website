@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Step-by-Step Guide to Install Docker, Docker Compose, Watchtower on Ubuntu Server 24.04
+  #
+
+This guide ensures you install the latest Docker Engine and Docker Compose on Ubuntu Server 24.04 (Noble), using the official Docker repositories.  As a bonus, it also includes directions to install Watchtower which will help keep your docker contained applications updated automatically and send you a notification via ntfy if updates occur
+
+
+  Step 1: Update the System
+  #
+
+Ensure your system is up to date before installing any packages:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/docker-compose-watchtower-install/">
+  <meta property="og:site_name" content="My Document Website">
+  <meta property="og:title" content="How to Auto Update Docker Apps With Watchtower">
+  <meta property="og:description" content="Step-by-Step Guide to Install Docker, Docker Compose, Watchtower on Ubuntu Server 24.04 # This guide ensures you install the latest Docker Engine and Docker Compose on Ubuntu Server 24.04 (Noble), using the official Docker repositories. As a bonus, it also includes directions to install Watchtower which will help keep your docker contained applications updated automatically and send you a notification via ntfy if updates occur
+Step 1: Update the System # Ensure your system is up to date before installing any packages:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2025-02-18T12:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-18T12:00:00+00:00">
+<title>How to Auto Update Docker Apps With Watchtower | My Document Website</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/docker-compose-watchtower-install/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4d1ffaff9c16d1f85b0f747fb783ed5c6dc5abc9d8ae5a82c19dee70906e08d8.js" integrity="sha256-TR/6/5wW0fhbD3R/t4PtXG3Fq8nYrlqCwZ3ucJBuCNg=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>My Document Website</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/welcome/" class="">Welcome</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/add-bash-completion-atuin-bash-extras-new-vms/" class="">Build a Better Bash with Atuin</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/docker-compose-watchtower-install/" class="active">How to Auto Update Docker Apps With Watchtower</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/hugo-website-with-actions-and-pages/" class="">How to Build Hugo Website</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>How to Auto Update Docker Apps With Watchtower</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#step-1-update-the-system"><strong>Step 1: Update the System</strong></a></li>
+    <li><a href="#step-2-install-required-dependencies"><strong>Step 2: Install Required Dependencies</strong></a></li>
+    <li><a href="#step-3-add-dockers-official-gpg-key"><strong>Step 3: Add Docker’s Official GPG Key</strong></a></li>
+    <li><a href="#step-4-add-the-docker-repository-for-ubuntu-2404-noble"><strong>Step 4: Add the Docker Repository (For Ubuntu 24.04 Noble)</strong></a></li>
+    <li><a href="#step-5-install-docker-engine-and-docker-compose-plugin"><strong>Step 5: Install Docker Engine and Docker Compose Plugin</strong></a></li>
+    <li><a href="#step-6-enable-and-start-the-docker-service"><strong>Step 6: Enable and Start the Docker Service</strong></a></li>
+    <li><a href="#step-7-verify-installation"><strong>Step 7: Verify Installation</strong></a></li>
+    <li><a href="#step-8-add-your-user-to-the-docker-group-optional-for-non-root-access"><strong>Step 8: Add Your User to the Docker Group (Optional, for Non-root Access)</strong></a></li>
+    <li><a href="#step-9-keeping-docker-and-compose-updated"><strong>Step 9: Keeping Docker and Compose Updated</strong></a>
+      <ul>
+        <li><a href="#final-verification"><strong>Final Verification</strong></a></li>
+        <li><a href="#final-step-install-watchtower-for-automatic-container-updates"><strong>Final Step: Install Watchtower for Automatic Container Updates</strong></a></li>
+        <li><a href="#should-you-install-watchtower-before-or-after-freshrss"><strong>Should You Install Watchtower Before or After FreshRSS?</strong></a></li>
+        <li><a href="#final-step-install-watchtower-with-built-in-ntfysh-notifications"><strong>Final Step: Install Watchtower with Built-in Ntfy.sh Notifications</strong></a></li>
+        <li><a href="#step-11-install-watchtower-with-ntfysh-notifications"><strong>Step 11: Install Watchtower with Ntfy.sh Notifications</strong></a></li>
+        <li><a href="#should-you-install-watchtower-before-or-after-freshrss-1"><strong>Should You Install Watchtower Before or After FreshRSS?</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h4 id="step-by-step-guide-to-install-docker-docker-compose-watchtower-on-ubuntu-server-2404">
+  <strong>Step-by-Step Guide to Install Docker, Docker Compose, Watchtower on Ubuntu Server 24.04</strong>
+  <a class="anchor" href="#step-by-step-guide-to-install-docker-docker-compose-watchtower-on-ubuntu-server-2404">#</a>
+</h4>
+<p>This guide ensures you install the latest <strong>Docker Engine</strong> and <strong>Docker Compose</strong> on <strong>Ubuntu Server 24.04 (Noble)</strong>, using the official Docker repositories.  As a bonus, it also includes directions to install Watchtower which will help keep your docker contained applications updated automatically and send you a notification via ntfy if updates occur</p>
+<hr>
+<h2 id="step-1-update-the-system">
+  <strong>Step 1: Update the System</strong>
+  <a class="anchor" href="#step-1-update-the-system">#</a>
+</h2>
+<p>Ensure your system is up to date before installing any packages:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>sudo apt update &amp;&amp; sudo apt upgrade -y</code></p>
+<hr>
+<h2 id="step-2-install-required-dependencies">
+  <strong>Step 2: Install Required Dependencies</strong>
+  <a class="anchor" href="#step-2-install-required-dependencies">#</a>
+</h2>
+<p>Install required system packages:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>sudo apt install -y ca-certificates curl gnupg</code></p>
+<hr>
+<h2 id="step-3-add-dockers-official-gpg-key">
+  <strong>Step 3: Add Docker’s Official GPG Key</strong>
+  <a class="anchor" href="#step-3-add-dockers-official-gpg-key">#</a>
+</h2>
+<p>Docker packages are signed, so we need to add the official GPG key:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>sudo install -m 0755 -d /etc/apt/keyrings</code><br>
+<code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo tee /etc/apt/keyrings/docker.asc &gt; /dev/null</code><br>
+<code>sudo chmod a+r /etc/apt/keyrings/docker.asc</code></p>
+<hr>
+<h2 id="step-4-add-the-docker-repository-for-ubuntu-2404-noble">
+  <strong>Step 4: Add the Docker Repository (For Ubuntu 24.04 Noble)</strong>
+  <a class="anchor" href="#step-4-add-the-docker-repository-for-ubuntu-2404-noble">#</a>
+</h2>
+<p>Now, add the <strong>Docker stable repository</strong> to your system:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>echo &quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu noble stable&quot; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null</code></p>
+<p>Then update the package index again:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>sudo apt update</code></p>
+<hr>
+<h2 id="step-5-install-docker-engine-and-docker-compose-plugin">
+  <strong>Step 5: Install Docker Engine and Docker Compose Plugin</strong>
+  <a class="anchor" href="#step-5-install-docker-engine-and-docker-compose-plugin">#</a>
+</h2>
+<p>Now, install the latest versions of Docker and the Compose plugin:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></p>
+<hr>
+<h2 id="step-6-enable-and-start-the-docker-service">
+  <strong>Step 6: Enable and Start the Docker Service</strong>
+  <a class="anchor" href="#step-6-enable-and-start-the-docker-service">#</a>
+</h2>
+<p>Ensure that Docker starts on boot and is currently running:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>sudo systemctl enable --now docker</code></p>
+<p>Check the service status:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>sudo systemctl status docker</code></p>
+<hr>
+<h2 id="step-7-verify-installation">
+  <strong>Step 7: Verify Installation</strong>
+  <a class="anchor" href="#step-7-verify-installation">#</a>
+</h2>
+<p>Check that Docker is installed correctly:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>docker --version</code></p>
+<p>Verify the Docker Compose plugin:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>docker compose version</code></p>
+<p>Run a test container to ensure everything works:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>docker run hello-world</code></p>
+<hr>
+<h2 id="step-8-add-your-user-to-the-docker-group-optional-for-non-root-access">
+  <strong>Step 8: Add Your User to the Docker Group (Optional, for Non-root Access)</strong>
+  <a class="anchor" href="#step-8-add-your-user-to-the-docker-group-optional-for-non-root-access">#</a>
+</h2>
+<p>By default, you need <code>sudo</code> to run Docker commands. To run Docker as a regular user, add yourself to the <strong>docker</strong> group:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>sudo usermod -aG docker $USER</code></p>
+<p>Apply the group change immediately:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>newgrp docker</code></p>
+<p>Now test running Docker <strong>without sudo</strong>:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>docker run hello-world</code></p>
+<hr>
+<h2 id="step-9-keeping-docker-and-compose-updated">
+  <strong>Step 9: Keeping Docker and Compose Updated</strong>
+  <a class="anchor" href="#step-9-keeping-docker-and-compose-updated">#</a>
+</h2>
+<p>Since Docker releases frequent updates, update your system regularly:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>sudo apt update &amp;&amp; sudo apt upgrade -y</code></p>
+<p>For a more targeted update, check if a new Docker version is available:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>apt list --upgradable | grep docker</code></p>
+<p>Then update Docker only:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></p>
+<hr>
+<h3 id="final-verification">
+  <strong>Final Verification</strong>
+  <a class="anchor" href="#final-verification">#</a>
+</h3>
+<p>After completing the steps, verify the installation one last time:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>docker --version</code><br>
+<code>docker compose version</code><br>
+<code>docker run hello-world</code></p>
+<p>At this point, you have <strong>the latest Docker and Docker Compose installed on Ubuntu 24.04</strong>, fully functional and ready to use.</p>
+<h5 id="you-said">
+  <strong>You said:</strong>
+  <a class="anchor" href="#you-said">#</a>
+</h5>
+<p>Add one final step. Install Watchtower to keep the containers updated. Or should that be after freshRSS in this case, is installed?</p>
+<h6 id="chatgpt-said">
+  <strong>ChatGPT said:</strong>
+  <a class="anchor" href="#chatgpt-said">#</a>
+</h6>
+<h3 id="final-step-install-watchtower-for-automatic-container-updates">
+  <strong>Final Step: Install Watchtower for Automatic Container Updates</strong>
+  <a class="anchor" href="#final-step-install-watchtower-for-automatic-container-updates">#</a>
+</h3>
+<p>Watchtower automatically updates your running Docker containers when new versions are available. However, <strong>you should install Watchtower after deploying key applications like FreshRSS</strong> to ensure everything is set up correctly before automating updates.</p>
+<h4 id="step-11-install-watchtower">
+  <strong>Step 11: Install Watchtower</strong>
+  <a class="anchor" href="#step-11-install-watchtower">#</a>
+</h4>
+<p>Once FreshRSS (or any other critical containerized applications) is running, install Watchtower with:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>docker run -d \</code><br>
+<code>--name watchtower \</code><br>
+<code>--restart unless-stopped \</code><br>
+<code>-v /var/run/docker.sock:/var/run/docker.sock \</code><br>
+<code>containrrr/watchtower</code></p>
+<h4 id="optional-enable-notifications">
+  <strong>(Optional) Enable Notifications</strong>
+  <a class="anchor" href="#optional-enable-notifications">#</a>
+</h4>
+<p>To get update notifications, add environment variables for your preferred service (e.g., Slack, Discord, email):</p>
+<p>bash<br>
+CopyEdit<br>
+<code>docker run -d \</code><br>
+<code>--name watchtower \</code><br>
+<code>--restart unless-stopped \</code><br>
+<code>-v /var/run/docker.sock:/var/run/docker.sock \</code><br>
+<code>-e WATCHTOWER_NOTIFICATIONS=email \</code><br>
+<code>-e WATCHTOWER_NOTIFICATION_EMAIL_FROM=&quot;your-email@example.com&quot; \</code><br>
+<code>-e WATCHTOWER_NOTIFICATION_EMAIL_TO=&quot;your-email@example.com&quot; \</code><br>
+<code>containrrr/watchtower</code></p>
+<h4 id="verify-watchtower-is-running">
+  <strong>Verify Watchtower is Running</strong>
+  <a class="anchor" href="#verify-watchtower-is-running">#</a>
+</h4>
+<p>Check logs to confirm Watchtower is monitoring containers:</p>
+<p>bash<br>
+CopyEdit<br>
+<code>docker logs -f watchtower</code></p>
+<h3 id="should-you-install-watchtower-before-or-after-freshrss">
+  <strong>Should You Install Watchtower Before or After FreshRSS?</strong>
+  <a class="anchor" href="#should-you-install-watchtower-before-or-after-freshrss">#</a>
+</h3>
+<p>✅ <strong>After FreshRSS installation</strong> is ideal. That way, you ensure FreshRSS is set up properly before enabling automatic updates, which could introduce changes unexpectedly.</p>
+<p>Would you like a FreshRSS installation guide next?</p>
+<h5 id="you-said-1">
+  <strong>You said:</strong>
+  <a class="anchor" href="#you-said-1">#</a>
+</h5>
+<p>With built in ntfy.sh running when watchtower runs</p>
+<h6 id="chatgpt-said-1">
+  <strong>ChatGPT said:</strong>
+  <a class="anchor" href="#chatgpt-said-1">#</a>
+</h6>
+<h3 id="final-step-install-watchtower-with-built-in-ntfysh-notifications">
+  <strong>Final Step: Install Watchtower with Built-in Ntfy.sh Notifications</strong>
+  <a class="anchor" href="#final-step-install-watchtower-with-built-in-ntfysh-notifications">#</a>
+</h3>
+<p>Watchtower will <strong>automatically update Docker containers</strong> and <strong>send notifications via Ntfy.sh</strong> whenever it updates a container.</p>
+<hr>
+<h3 id="step-11-install-watchtower-with-ntfysh-notifications">
+  <strong>Step 11: Install Watchtower with Ntfy.sh Notifications</strong>
+  <a class="anchor" href="#step-11-install-watchtower-with-ntfysh-notifications">#</a>
+</h3>
+<p><strong>Run Watchtower with Ntfy.sh</strong><br>
+Replace <code>&lt;your-ntfy-topic&gt;</code> with your chosen topic (e.g., <code>freshrss-updates</code>):<br>
+bash<br>
+CopyEdit<br>
+<code>docker run -d \</code><br>
+<code>--name watchtower \</code><br>
+<code>--restart unless-stopped \</code><br>
+<code>-v /var/run/docker.sock:/var/run/docker.sock \</code><br>
+<code>-e WATCHTOWER_NOTIFICATIONS=ntfy \</code><br>
+<code>-e WATCHTOWER_NOTIFICATION_URL=&quot;https://ntfy.sh/&lt;your-ntfy-topic&gt;&quot; \</code><br>
+<code>containrrr/watchtower</code></p>
+<ol>
+<li></li>
+</ol>
+<p><strong>Verify Watchtower is Running</strong><br>
+Check logs to confirm Watchtower is monitoring containers and sending notifications:<br>
+bash<br>
+CopyEdit<br>
+<code>docker logs -f watchtower</code></p>
+<ol start="2">
+<li></li>
+<li><strong>Test Ntfy.sh Notifications</strong><br>
+Open your Ntfy.sh topic URL (<code>https://ntfy.sh/&lt;your-ntfy-topic&gt;</code>) in a browser or use the mobile app to verify Watchtower messages.</li>
+</ol>
+<hr>
+<h3 id="should-you-install-watchtower-before-or-after-freshrss-1">
+  <strong>Should You Install Watchtower Before or After FreshRSS?</strong>
+  <a class="anchor" href="#should-you-install-watchtower-before-or-after-freshrss-1">#</a>
+</h3>
+<p>✅ <strong>Install Watchtower after FreshRSS</strong> to avoid automatic updates during the initial setup.</p>
+<p>Would you like a <strong>FreshRSS installation guide</strong> next?</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#step-1-update-the-system"><strong>Step 1: Update the System</strong></a></li>
+    <li><a href="#step-2-install-required-dependencies"><strong>Step 2: Install Required Dependencies</strong></a></li>
+    <li><a href="#step-3-add-dockers-official-gpg-key"><strong>Step 3: Add Docker’s Official GPG Key</strong></a></li>
+    <li><a href="#step-4-add-the-docker-repository-for-ubuntu-2404-noble"><strong>Step 4: Add the Docker Repository (For Ubuntu 24.04 Noble)</strong></a></li>
+    <li><a href="#step-5-install-docker-engine-and-docker-compose-plugin"><strong>Step 5: Install Docker Engine and Docker Compose Plugin</strong></a></li>
+    <li><a href="#step-6-enable-and-start-the-docker-service"><strong>Step 6: Enable and Start the Docker Service</strong></a></li>
+    <li><a href="#step-7-verify-installation"><strong>Step 7: Verify Installation</strong></a></li>
+    <li><a href="#step-8-add-your-user-to-the-docker-group-optional-for-non-root-access"><strong>Step 8: Add Your User to the Docker Group (Optional, for Non-root Access)</strong></a></li>
+    <li><a href="#step-9-keeping-docker-and-compose-updated"><strong>Step 9: Keeping Docker and Compose Updated</strong></a>
+      <ul>
+        <li><a href="#final-verification"><strong>Final Verification</strong></a></li>
+        <li><a href="#final-step-install-watchtower-for-automatic-container-updates"><strong>Final Step: Install Watchtower for Automatic Container Updates</strong></a></li>
+        <li><a href="#should-you-install-watchtower-before-or-after-freshrss"><strong>Should You Install Watchtower Before or After FreshRSS?</strong></a></li>
+        <li><a href="#final-step-install-watchtower-with-built-in-ntfysh-notifications"><strong>Final Step: Install Watchtower with Built-in Ntfy.sh Notifications</strong></a></li>
+        <li><a href="#step-11-install-watchtower-with-ntfysh-notifications"><strong>Step 11: Install Watchtower with Ntfy.sh Notifications</strong></a></li>
+        <li><a href="#should-you-install-watchtower-before-or-after-freshrss-1"><strong>Should You Install Watchtower Before or After FreshRSS?</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

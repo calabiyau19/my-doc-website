@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  A step-by-step guide to deploying a static Hugo site with full CI/CD using GitHub Actions and Pages
+  #
+
+
+  Prerequisites
+  #
+
+
+A GitHub account
+A Linux machine (tested on Xubuntu Minimal)
+Basic knowledge of the command line
+
+
+  Step 1: Remove Any Previous Setup
+  #
+
+sh
+CopyEdit
+rm -rf ~/my-doc-website
+Then, delete any existing GitHub repository for the project.
+
+  Step 2: Create a New GitHub Repository
+  #
+
+Go to GitHub, create a new repository named my-doc-website.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/hugo-website-with-actions-and-pages/">
+  <meta property="og:site_name" content="My Document Website">
+  <meta property="og:title" content="How to Build Hugo Website">
+  <meta property="og:description" content="A step-by-step guide to deploying a static Hugo site with full CI/CD using GitHub Actions and Pages # Prerequisites # A GitHub account A Linux machine (tested on Xubuntu Minimal) Basic knowledge of the command line Step 1: Remove Any Previous Setup # sh
+CopyEdit
+rm -rf ~/my-doc-website
+Then, delete any existing GitHub repository for the project.
+Step 2: Create a New GitHub Repository # Go to GitHub, create a new repository named my-doc-website.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2025-02-18T12:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-18T12:00:00+00:00">
+<title>How to Build Hugo Website | My Document Website</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/hugo-website-with-actions-and-pages/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4d1ffaff9c16d1f85b0f747fb783ed5c6dc5abc9d8ae5a82c19dee70906e08d8.js" integrity="sha256-TR/6/5wW0fhbD3R/t4PtXG3Fq8nYrlqCwZ3ucJBuCNg=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>My Document Website</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/welcome/" class="">Welcome</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/add-bash-completion-atuin-bash-extras-new-vms/" class="">Build a Better Bash with Atuin</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/docker-compose-watchtower-install/" class="">How to Auto Update Docker Apps With Watchtower</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/hugo-website-with-actions-and-pages/" class="active">How to Build Hugo Website</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>How to Build Hugo Website</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+        <li><a href="#prerequisites"><strong>Prerequisites</strong></a></li>
+        <li><a href="#step-1-remove-any-previous-setup"><strong>Step 1: Remove Any Previous Setup</strong></a></li>
+        <li><a href="#step-2-create-a-new-github-repository"><strong>Step 2: Create a New GitHub Repository</strong></a></li>
+        <li><a href="#step-3-clone-the-repository-to-your-local-machine"><strong>Step 3: Clone the Repository to Your Local Machine</strong></a></li>
+        <li><a href="#step-4-install-necessary-software"><strong>Step 4: Install Necessary Software</strong></a></li>
+        <li><a href="#step-5-install-hugo"><strong>Step 5: Install Hugo</strong></a></li>
+        <li><a href="#step-6-add-the-anatole-theme"><strong>Step 6: Add the Anatole Theme</strong></a></li>
+        <li><a href="#step-7-configure-hugo-hugotoml"><strong>Step 7: Configure Hugo (<code>hugo.toml</code>)</strong></a></li>
+        <li><a href="#step-8-start-hugo-locally"><strong>Step 8: Start Hugo Locally</strong></a></li>
+        <li><a href="#step-9-add-a-profile-picture"><strong>Step 9: Add a Profile Picture</strong></a></li>
+        <li><a href="#step-10-add-a-first-blog-post"><strong>Step 10: Add a First Blog Post</strong></a></li>
+        <li><a href="#step-11-commit-and-push-the-site-to-github"><strong>Step 11: Commit and Push the Site to GitHub</strong></a></li>
+        <li><a href="#step-12-set-up-github-pages"><strong>Step 12: Set Up GitHub Pages</strong></a></li>
+        <li><a href="#step-13-set-up-github-actions-for-deployment"><strong>Step 13: Set Up GitHub Actions for Deployment</strong></a></li>
+        <li><a href="#step-14-commit-and-push-github-actions-workflow"><strong>Step 14: Commit and Push GitHub Actions Workflow</strong></a></li>
+        <li><a href="#step-15-enable-github-actions-write-permissions"><strong>Step 15: Enable GitHub Actions Write Permissions</strong></a></li>
+        <li><a href="#step-16-manually-create-the-gh-pages-branch"><strong>Step 16: Manually Create the <code>gh-pages</code> Branch</strong></a></li>
+        <li><a href="#step-17-trigger-deployment-again"><strong>Step 17: Trigger Deployment Again</strong></a></li>
+        <li><a href="#step-18-verify-deployment"><strong>Step 18: Verify Deployment</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h4 id="a-step-by-step-guide-to-deploying-a-static-hugo-site-with-full-cicd-using-github-actions-and-pages">
+  A step-by-step guide to deploying a static Hugo site with full CI/CD using GitHub Actions and Pages
+  <a class="anchor" href="#a-step-by-step-guide-to-deploying-a-static-hugo-site-with-full-cicd-using-github-actions-and-pages">#</a>
+</h4>
+<h3 id="prerequisites">
+  <strong>Prerequisites</strong>
+  <a class="anchor" href="#prerequisites">#</a>
+</h3>
+<ul>
+<li>A GitHub account</li>
+<li>A Linux machine (tested on Xubuntu Minimal)</li>
+<li>Basic knowledge of the command line</li>
+</ul>
+<h3 id="step-1-remove-any-previous-setup">
+  <strong>Step 1: Remove Any Previous Setup</strong>
+  <a class="anchor" href="#step-1-remove-any-previous-setup">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>rm -rf ~/my-doc-website</code></p>
+<p>Then, delete any existing GitHub repository for the project.</p>
+<h3 id="step-2-create-a-new-github-repository">
+  <strong>Step 2: Create a New GitHub Repository</strong>
+  <a class="anchor" href="#step-2-create-a-new-github-repository">#</a>
+</h3>
+<p>Go to GitHub, create a new repository named <strong>my-doc-website</strong>.</p>
+<h3 id="step-3-clone-the-repository-to-your-local-machine">
+  <strong>Step 3: Clone the Repository to Your Local Machine</strong>
+  <a class="anchor" href="#step-3-clone-the-repository-to-your-local-machine">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>cd ~</code> <br>
+<code>git clone git@github.com:calabiyau19/my-doc-website.git</code> <br>
+<code>cd my-doc-website</code></p>
+<h3 id="step-4-install-necessary-software">
+  <strong>Step 4: Install Necessary Software</strong>
+  <a class="anchor" href="#step-4-install-necessary-software">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>sudo apt update &amp;&amp; sudo apt upgrade -y</code> <br>
+<code>sudo apt install git -y</code> <br>
+<code>git --version</code></p>
+<h3 id="step-5-install-hugo">
+  <strong>Step 5: Install Hugo</strong>
+  <a class="anchor" href="#step-5-install-hugo">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>sudo dpkg -i hugo_extended_0.143.1_linux-amd64.deb</code> <br>
+<code>hugo version</code></p>
+<h3 id="step-6-add-the-anatole-theme">
+  <strong>Step 6: Add the Anatole Theme</strong>
+  <a class="anchor" href="#step-6-add-the-anatole-theme">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>git submodule add https://github.com/lxndrblz/anatole.git themes/anatole</code> <br>
+<code>ls themes</code></p>
+<h3 id="step-7-configure-hugo-hugotoml">
+  <strong>Step 7: Configure Hugo (<code>hugo.toml</code>)</strong>
+  <a class="anchor" href="#step-7-configure-hugo-hugotoml">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>nano hugo.toml</code></p>
+<p>Replace contents with:</p>
+<p>toml<br>
+CopyEdit<br>
+<code>baseURL = &quot;https://calabiyau19.github.io/my-doc-website/&quot;</code> <br>
+<code>languageCode = &quot;en-us&quot;</code> <br>
+<code>title = &quot;My Doc Website&quot;</code> <br>
+<code>theme = &quot;anatole&quot;</code></p>
+<h3 id="step-8-start-hugo-locally">
+  <strong>Step 8: Start Hugo Locally</strong>
+  <a class="anchor" href="#step-8-start-hugo-locally">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>hugo server -D</code></p>
+<h3 id="step-9-add-a-profile-picture">
+  <strong>Step 9: Add a Profile Picture</strong>
+  <a class="anchor" href="#step-9-add-a-profile-picture">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>mkdir -p static/images</code> <br>
+<code>cp ~/Downloads/profile.jpg static/images/profile.jpg</code></p>
+<h3 id="step-10-add-a-first-blog-post">
+  <strong>Step 10: Add a First Blog Post</strong>
+  <a class="anchor" href="#step-10-add-a-first-blog-post">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>hugo new blog/my-first-post.md</code> <br>
+<code>nano content/blog/my-first-post.md</code></p>
+<h3 id="step-11-commit-and-push-the-site-to-github">
+  <strong>Step 11: Commit and Push the Site to GitHub</strong>
+  <a class="anchor" href="#step-11-commit-and-push-the-site-to-github">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>git add .</code> <br>
+<code>git commit -m &quot;Initial Hugo setup&quot;</code> <br>
+<code>git push origin main</code></p>
+<h3 id="step-12-set-up-github-pages">
+  <strong>Step 12: Set Up GitHub Pages</strong>
+  <a class="anchor" href="#step-12-set-up-github-pages">#</a>
+</h3>
+<p>Go to <strong>GitHub repository → Settings → Pages</strong> → Set branch to <strong>main</strong> → Save.</p>
+<h3 id="step-13-set-up-github-actions-for-deployment">
+  <strong>Step 13: Set Up GitHub Actions for Deployment</strong>
+  <a class="anchor" href="#step-13-set-up-github-actions-for-deployment">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>mkdir -p .github/workflows</code> <br>
+<code>nano .github/workflows/deploy.yml</code></p>
+<h3 id="step-14-commit-and-push-github-actions-workflow">
+  <strong>Step 14: Commit and Push GitHub Actions Workflow</strong>
+  <a class="anchor" href="#step-14-commit-and-push-github-actions-workflow">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>git add .github/workflows/deploy.yml</code> <br>
+<code>git commit -m &quot;Add GitHub Actions workflow&quot;</code> <br>
+<code>git push origin main</code></p>
+<h3 id="step-15-enable-github-actions-write-permissions">
+  <strong>Step 15: Enable GitHub Actions Write Permissions</strong>
+  <a class="anchor" href="#step-15-enable-github-actions-write-permissions">#</a>
+</h3>
+<p>Go to <strong>GitHub repository → Settings → Actions → Set permissions</strong>.</p>
+<h3 id="step-16-manually-create-the-gh-pages-branch">
+  <strong>Step 16: Manually Create the <code>gh-pages</code> Branch</strong>
+  <a class="anchor" href="#step-16-manually-create-the-gh-pages-branch">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>git checkout --orphan gh-pages</code> <br>
+<code>git rm -rf .</code> <br>
+<code>git commit --allow-empty -m &quot;Initialize gh-pages branch&quot;</code> <br>
+<code>git push origin gh-pages</code> <br>
+<code>git checkout main</code></p>
+<h3 id="step-17-trigger-deployment-again">
+  <strong>Step 17: Trigger Deployment Again</strong>
+  <a class="anchor" href="#step-17-trigger-deployment-again">#</a>
+</h3>
+<p>sh<br>
+CopyEdit<br>
+<code>nano hugo.toml</code> <br>
+<code># Add a small change</code></p>
+<p><code>git add hugo.toml</code> <br>
+<code>git commit -m &quot;Trigger new deployment&quot;</code> <br>
+<code>git push origin main</code></p>
+<h3 id="step-18-verify-deployment">
+  <strong>Step 18: Verify Deployment</strong>
+  <a class="anchor" href="#step-18-verify-deployment">#</a>
+</h3>
+<p>Go to <strong>GitHub Actions tab</strong> → Ensure deployment is successful.<br>
+Visit: <a href="https://calabiyau19.github.io/my-doc-website/">https://calabiyau19.github.io/my-doc-website/</a></p>
+<p>🎉 <strong>Done!</strong> Your Hugo site is fully deployed with CI/CD</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+        <li><a href="#prerequisites"><strong>Prerequisites</strong></a></li>
+        <li><a href="#step-1-remove-any-previous-setup"><strong>Step 1: Remove Any Previous Setup</strong></a></li>
+        <li><a href="#step-2-create-a-new-github-repository"><strong>Step 2: Create a New GitHub Repository</strong></a></li>
+        <li><a href="#step-3-clone-the-repository-to-your-local-machine"><strong>Step 3: Clone the Repository to Your Local Machine</strong></a></li>
+        <li><a href="#step-4-install-necessary-software"><strong>Step 4: Install Necessary Software</strong></a></li>
+        <li><a href="#step-5-install-hugo"><strong>Step 5: Install Hugo</strong></a></li>
+        <li><a href="#step-6-add-the-anatole-theme"><strong>Step 6: Add the Anatole Theme</strong></a></li>
+        <li><a href="#step-7-configure-hugo-hugotoml"><strong>Step 7: Configure Hugo (<code>hugo.toml</code>)</strong></a></li>
+        <li><a href="#step-8-start-hugo-locally"><strong>Step 8: Start Hugo Locally</strong></a></li>
+        <li><a href="#step-9-add-a-profile-picture"><strong>Step 9: Add a Profile Picture</strong></a></li>
+        <li><a href="#step-10-add-a-first-blog-post"><strong>Step 10: Add a First Blog Post</strong></a></li>
+        <li><a href="#step-11-commit-and-push-the-site-to-github"><strong>Step 11: Commit and Push the Site to GitHub</strong></a></li>
+        <li><a href="#step-12-set-up-github-pages"><strong>Step 12: Set Up GitHub Pages</strong></a></li>
+        <li><a href="#step-13-set-up-github-actions-for-deployment"><strong>Step 13: Set Up GitHub Actions for Deployment</strong></a></li>
+        <li><a href="#step-14-commit-and-push-github-actions-workflow"><strong>Step 14: Commit and Push GitHub Actions Workflow</strong></a></li>
+        <li><a href="#step-15-enable-github-actions-write-permissions"><strong>Step 15: Enable GitHub Actions Write Permissions</strong></a></li>
+        <li><a href="#step-16-manually-create-the-gh-pages-branch"><strong>Step 16: Manually Create the <code>gh-pages</code> Branch</strong></a></li>
+        <li><a href="#step-17-trigger-deployment-again"><strong>Step 17: Trigger Deployment Again</strong></a></li>
+        <li><a href="#step-18-verify-deployment"><strong>Step 18: Verify Deployment</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

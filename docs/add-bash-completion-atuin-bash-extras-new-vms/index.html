@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A guide to adding Atuin and Bash completion to stock Bash for an improved shell history experience.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/add-bash-completion-atuin-bash-extras-new-vms/">
+  <meta property="og:site_name" content="My Document Website">
+  <meta property="og:title" content="Build a Better Bash with Atuin">
+  <meta property="og:description" content="A guide to adding Atuin and Bash completion to stock Bash for an improved shell history experience.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2025-02-18T13:30:00+00:00">
+    <meta property="article:modified_time" content="2025-02-18T13:30:00+00:00">
+<title>Build a Better Bash with Atuin | My Document Website</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/add-bash-completion-atuin-bash-extras-new-vms/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4d1ffaff9c16d1f85b0f747fb783ed5c6dc5abc9d8ae5a82c19dee70906e08d8.js" integrity="sha256-TR/6/5wW0fhbD3R/t4PtXG3Fq8nYrlqCwZ3ucJBuCNg=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>My Document Website</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/welcome/" class="">Welcome</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/add-bash-completion-atuin-bash-extras-new-vms/" class="active">Build a Better Bash with Atuin</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/docker-compose-watchtower-install/" class="">How to Auto Update Docker Apps With Watchtower</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/hugo-website-with-actions-and-pages/" class="">How to Build Hugo Website</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Build a Better Bash with Atuin</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#step-by-step-plan-for-setting-up-bash-completion-and-atuin-in-new-vms"><strong>Step-by-Step Plan for Setting Up Bash Completion and Atuin in New VMs</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#step-1-update-the-system"><strong>Step 1: Update the System</strong></a></li>
+    <li><a href="#step-2-install-required-tools"><strong>Step 2: Install Required Tools</strong></a></li>
+    <li><a href="#step-3-install-bash-completion"><strong>Step 3: Install Bash Completion</strong></a></li>
+    <li><a href="#step-4-install-atuin"><strong>Step 4: Install Atuin</strong></a></li>
+    <li><a href="#step-5-enable-atuin-in-every-ssh-session"><strong>Step 5: Enable Atuin in Every SSH Session</strong></a></li>
+    <li><a href="#step-6-test-everything"><strong>Step 6: Test Everything</strong></a>
+      <ul>
+        <li><a href="#test-bash-completion"><strong>Test Bash Completion</strong></a></li>
+        <li><a href="#test-atuin"><strong>Test Atuin</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#step-7-repeat-for-every-new-vm"><strong>Step 7: Repeat for Every New VM</strong></a>
+      <ul>
+        <li><a href="#summary-of-commands"><strong>Summary of Commands</strong></a></li>
+        <li><a href="#shell-compatibility"><strong>Shell Compatibility:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#if-using-zsh"><strong>If Using Zsh</strong></a></li>
+    <li><a href="#if-using-fish"><strong>If Using Fish</strong></a>
+      <ul>
+        <li><a href="#tldr"><strong>TL;DR</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#1-add-git-status-to-your-prompt-if-you-use-git"><strong>1️⃣ Add Git Status to Your Prompt (If You Use Git)</strong></a>
+      <ul>
+        <li><a href="#what-this-does"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#2-show-exit-code-of-last-command-only-if-it-fails"><strong>2️⃣ Show Exit Code of Last Command (Only if it Fails)</strong></a>
+      <ul>
+        <li><a href="#what-this-does-1"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#3-add-timestamps-to-your-history"><strong>3️⃣ Add Timestamps to Your History</strong></a>
+      <ul>
+        <li><a href="#what-this-does-2"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#4-make-your-prompt-show-the-last-command-execution-time"><strong>4️⃣ Make Your Prompt Show the Last Command Execution Time</strong></a>
+      <ul>
+        <li><a href="#what-this-does-3"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#5-enable-persistent-history-across-sessions"><strong>5️⃣ Enable Persistent History Across Sessions</strong></a>
+      <ul>
+        <li><a href="#what-this-does-4"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#6-enable-better-navigation-ctrlarrow-for-word-jumps"><strong>6️⃣ Enable Better Navigation (Ctrl+Arrow for Word Jumps)</strong></a>
+      <ul>
+        <li><a href="#what-this-does-5"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#7-shorten-your-prompt-on-long-paths"><strong>7️⃣ Shorten Your Prompt on Long Paths</strong></a>
+      <ul>
+        <li><a href="#what-this-does-6"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#8-improve-cd-behavior-auto-push-to-stack"><strong>8️⃣ Improve &ldquo;cd&rdquo; Behavior (Auto Push to Stack)</strong></a>
+      <ul>
+        <li><a href="#what-this-does-7"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#final-steps-apply-the-changes"><strong>Final Steps: Apply the Changes</strong></a>
+      <ul>
+        <li><a href="#-tldr---what-these-enhancements-do"><strong>📌 TL;DR - What These Enhancements Do</strong></a></li>
+        <li><a href="#exceptions-where-it-wont-persist"><strong>Exceptions Where It Won’t Persist</strong></a></li>
+        <li><a href="#to-apply-changes-system-wide-all-users"><strong>To Apply Changes System-Wide (All Users)</strong></a></li>
+        <li><a href="#tldr-1"><strong>TL;DR</strong></a></li>
+        <li><a href="#step-1-open-bashrc-for-editing"><strong>Step 1: Open <code>~/.bashrc</code> for Editing</strong></a></li>
+        <li><a href="#step-2-add-the-git-branch-function-to-your-prompt"><strong>Step 2: Add the Git Branch Function to Your Prompt</strong></a></li>
+        <li><a href="#step-3-save-the-file-and-exit"><strong>Step 3: Save the File and Exit</strong></a></li>
+        <li><a href="#step-4-apply-the-changes-immediately"><strong>Step 4: Apply the Changes Immediately</strong></a></li>
+        <li><a href="#step-5-verify-that-it-works"><strong>Step 5: Verify That It Works</strong></a></li>
+        <li><a href="#step-6-make-sure-it-works-in-new-ssh-sessions"><strong>Step 6: Make Sure It Works in New SSH Sessions</strong></a></li>
+        <li><a href="#bonus-make-it-system-wide-all-users"><strong>Bonus: Make It System-Wide (All Users)</strong></a></li>
+        <li><a href="#youre-done-"><strong>You&rsquo;re Done! 🎉</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h3 id="step-by-step-plan-for-setting-up-bash-completion-and-atuin-in-new-vms">
+  <strong>Step-by-Step Plan for Setting Up Bash Completion and Atuin in New VMs</strong>
+  <a class="anchor" href="#step-by-step-plan-for-setting-up-bash-completion-and-atuin-in-new-vms">#</a>
+</h3>
+<p>This guide will ensure that every new Ubuntu Server VM you set up has <strong>bash completion</strong> for tab completion and <strong>Atuin</strong> for enhanced shell history.</p>
+<hr>
+<h2 id="step-1-update-the-system">
+  <strong>Step 1: Update the System</strong>
+  <a class="anchor" href="#step-1-update-the-system">#</a>
+</h2>
+<p>Before installing anything, update and upgrade all packages.</p>
+<p>bash<br>
+enter<br>
+<code>sudo apt update &amp;&amp; sudo apt upgrade -y</code></p>
+<hr>
+<h2 id="step-2-install-required-tools">
+  <strong>Step 2: Install Required Tools</strong>
+  <a class="anchor" href="#step-2-install-required-tools">#</a>
+</h2>
+<p>Since Ubuntu Server doesn’t include some essential tools by default, install the following:</p>
+<p>bash<br>
+enter<br>
+<code>sudo apt install -y curl wget git unzip apt-transport-https ca-certificates lsb-release</code></p>
+<p>These tools are required for downloading and installing software, including Atuin.</p>
+<hr>
+<h2 id="step-3-install-bash-completion">
+  <strong>Step 3: Install Bash Completion</strong>
+  <a class="anchor" href="#step-3-install-bash-completion">#</a>
+</h2>
+<p>Bash completion allows for easier command entry via <strong>tab completion</strong>.</p>
+<p><strong>Check if bash-completion is installed:</strong><br>
+bash<br>
+enter<br>
+<code>dpkg -l | grep bash-completion</code></p>
+<ol>
+<li></li>
+</ol>
+<ul>
+<li>If installed, move to Step 4.</li>
+</ul>
+<p>If not installed, install it:<br>
+bash<br>
+enter<br>
+<code>sudo apt install -y bash-completion</code></p>
+<ul>
+<li></li>
+</ul>
+<p><strong>Ensure bash-completion is enabled</strong> by verifying that this block exists in <code>~/.bashrc</code>:<br>
+bash<br>
+enter<br>
+<code>if ! shopt -oq posix; then</code><br>
+<code>if [ -f /usr/share/bash-completion/bash_completion ]; then</code><br>
+<code>. /usr/share/bash-completion/bash_completion</code><br>
+<code>elif [ -f /etc/bash_completion ]; then</code><br>
+<code>. /etc/bash_completion</code><br>
+<code>fi</code><br>
+<code>fi</code></p>
+<ol start="2">
+<li></li>
+</ol>
+<p>If missing, <strong>add it to</strong> <code>~/.bashrc</code>:<br>
+bash<br>
+enter<br>
+<code>echo 'if ! shopt -oq posix; then</code><br>
+<code>if [ -f /usr/share/bash-completion/bash_completion ]; then</code><br>
+<code>. /usr/share/bash-completion/bash_completion</code><br>
+<code>elif [ -f /etc/bash_completion ]; then</code><br>
+<code>. /etc/bash_completion</code><br>
+<code>fi</code><br>
+<code>fi' &gt;&gt; ~/.bashrc</code></p>
+<ul>
+<li></li>
+</ul>
+<p><strong>Apply the changes:</strong><br>
+bash<br>
+enter<br>
+<code>source ~/.bashrc</code></p>
+<ol start="3">
+<li></li>
+</ol>
+<hr>
+<h2 id="step-4-install-atuin">
+  <strong>Step 4: Install Atuin</strong>
+  <a class="anchor" href="#step-4-install-atuin">#</a>
+</h2>
+<p>Atuin enhances shell history with powerful search and synchronization.</p>
+<p><strong>Download and install Atuin using the official script:</strong><br>
+bash<br>
+enter<br>
+<code>curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh</code></p>
+<ol>
+<li></li>
+</ol>
+<p><strong>Ensure Atuin is added to your shell’s PATH</strong> (so it works in all sessions):<br>
+bash<br>
+enter<br>
+<code>source $HOME/.atuin/bin/env</code></p>
+<ol start="2">
+<li></li>
+</ol>
+<p><strong>Restart your shell</strong> to finalize the setup:<br>
+bash<br>
+enter<br>
+<code>exec &quot;$SHELL&quot;</code></p>
+<ol start="3">
+<li></li>
+</ol>
+<p><strong>Verify the installation:</strong><br>
+bash<br>
+enter<br>
+<code>atuin --version</code></p>
+<ol start="4">
+<li>If you see a version number, Atuin is correctly installed.</li>
+</ol>
+<hr>
+<h2 id="step-5-enable-atuin-in-every-ssh-session">
+  <strong>Step 5: Enable Atuin in Every SSH Session</strong>
+  <a class="anchor" href="#step-5-enable-atuin-in-every-ssh-session">#</a>
+</h2>
+<p>To make sure Atuin is automatically loaded in every session:</p>
+<p>bash<br>
+enter<br>
+<code>echo 'source $HOME/.atuin/bin/env' &gt;&gt; ~/.bashrc</code></p>
+<p>Apply the changes:</p>
+<p>bash<br>
+enter<br>
+<code>source ~/.bashrc</code></p>
+<hr>
+<h2 id="step-6-test-everything">
+  <strong>Step 6: Test Everything</strong>
+  <a class="anchor" href="#step-6-test-everything">#</a>
+</h2>
+<h3 id="test-bash-completion">
+  <strong>Test Bash Completion</strong>
+  <a class="anchor" href="#test-bash-completion">#</a>
+</h3>
+<p>Start typing a command, e.g.:<br>
+bash<br>
+enter<br>
+<code>sudo apt    &lt;&lt;&lt; add space also for more options</code></p>
+<ol>
+<li>Press <code>Tab</code> twice. If autocompletion works, you should see options like <code>install</code>, <code>update</code>, etc.</li>
+</ol>
+<h3 id="test-atuin">
+  <strong>Test Atuin</strong>
+  <a class="anchor" href="#test-atuin">#</a>
+</h3>
+<p>Run:<br>
+bash<br>
+enter<br>
+<code>atuin search apt</code></p>
+<ol>
+<li>This should return previous commands containing &ldquo;apt&rdquo;.</li>
+<li>Try <strong>using Atuin autocomplete</strong>:
+<ul>
+<li>Start typing a previous command and press <code>Ctrl + R</code> to see enhanced history suggestions.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="step-7-repeat-for-every-new-vm">
+  <strong>Step 7: Repeat for Every New VM</strong>
+  <a class="anchor" href="#step-7-repeat-for-every-new-vm">#</a>
+</h2>
+<p>Now, whenever you create a new VM, just follow this exact guide to set up <strong>bash completion and Atuin</strong> consistently across all machines.</p>
+<hr>
+<h3 id="summary-of-commands">
+  <strong>Summary of Commands</strong>
+  <a class="anchor" href="#summary-of-commands">#</a>
+</h3>
+<p>For reference, here’s the full list of commands to run in sequence:</p>
+<p>bash<br>
+enter<br>
+<code># Step 1: Update system</code><br>
+<code>sudo apt update &amp;&amp; sudo apt upgrade -y</code></p>
+<p><code># Step 2: Install required tools</code><br>
+<code>sudo apt install -y curl wget git unzip apt-transport-https ca-certificates lsb-release</code></p>
+<p><code># Step 3: Install bash-completion (if needed)</code><br>
+<code>sudo apt install -y bash-completion</code><br>
+<code>echo 'if ! shopt -oq posix; then</code><br>
+<code>if [ -f /usr/share/bash-completion/bash_completion ]; then</code><br>
+<code>. /usr/share/bash-completion/bash_completion</code><br>
+<code>elif [ -f /etc/bash_completion ]; then</code><br>
+<code>. /etc/bash_completion</code><br>
+<code>fi</code><br>
+<code>fi' &gt;&gt; ~/.bashrc</code><br>
+<code>source ~/.bashrc</code></p>
+<p><code># Step 4: Install Atuin</code><br>
+<code>curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh</code><br>
+<code>source $HOME/.atuin/bin/env</code><br>
+<code>exec &quot;$SHELL&quot;</code></p>
+<p><code># Step 5: Make Atuin work in all future SSH sessions</code><br>
+<code>echo 'source $HOME/.atuin/bin/env' &gt;&gt; ~/.bashrc</code><br>
+<code>source ~/.bashrc</code></p>
+<p><code># Step 6: Verify everything</code><br>
+<code>atuin --version</code><br>
+<code>atuin search apt  # Test history search</code></p>
+<hr>
+<p>This plan is now <strong>concise, correct, and repeatable</strong> for every new VM you set up. 🚀 Let me know if you need any refinements!</p>
+<p>This setup primarily applies to <strong>Bash</strong> (the default shell for Ubuntu Server) and <strong>Zsh</strong>. However, Atuin also supports <strong>Fish</strong>, but requires a different configuration step.</p>
+<h3 id="shell-compatibility">
+  <strong>Shell Compatibility:</strong>
+  <a class="anchor" href="#shell-compatibility">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Shell</th>
+          <th>Bash Completion</th>
+          <th>Atuin Support</th>
+          <th>Configuration Needed?</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Bash</strong> (Default)</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
+          <td>No extra config needed (already covered in the guide)</td>
+      </tr>
+      <tr>
+          <td><strong>Zsh</strong></td>
+          <td>❌ No (Zsh has its own completion system)</td>
+          <td>✅ Yes</td>
+          <td>Needs manual Atuin configuration</td>
+      </tr>
+      <tr>
+          <td><strong>Fish</strong></td>
+          <td>❌ No</td>
+          <td>✅ Yes</td>
+          <td>Uses a different config file (<code>env.fish</code>)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="if-using-zsh">
+  <strong>If Using Zsh</strong>
+  <a class="anchor" href="#if-using-zsh">#</a>
+</h2>
+<p>For Zsh users, Atuin still works, but Bash completion isn&rsquo;t needed. You <strong>must</strong> add Atuin’s environment config manually:</p>
+<p><strong>Install Zsh (if not already installed)</strong><br>
+bash<br>
+enter<br>
+<code>sudo apt install -y zsh</code></p>
+<ol>
+<li></li>
+</ol>
+<p><strong>Add Atuin to your Zsh configuration</strong><br>
+bash<br>
+enter<br>
+<code>echo 'source $HOME/.atuin/bin/env' &gt;&gt; ~/.zshrc</code></p>
+<ol start="2">
+<li></li>
+</ol>
+<p><strong>Apply the changes</strong><br>
+bash<br>
+enter<br>
+<code>source ~/.zshrc</code></p>
+<ol start="3">
+<li></li>
+</ol>
+<hr>
+<h2 id="if-using-fish">
+  <strong>If Using Fish</strong>
+  <a class="anchor" href="#if-using-fish">#</a>
+</h2>
+<p>Fish doesn’t use <code>.bashrc</code> or <code>.zshrc</code>, so Atuin needs a different approach:</p>
+<p><strong>Add Atuin’s Fish configuration</strong><br>
+bash<br>
+enter<br>
+<code>source $HOME/.atuin/bin/env.fish</code></p>
+<ol>
+<li></li>
+</ol>
+<p><strong>Make it persistent</strong><br>
+bash<br>
+enter<br>
+<code>echo 'source $HOME/.atuin/bin/env.fish' &gt;&gt; ~/.config/fish/config.fish</code></p>
+<ol start="2">
+<li></li>
+</ol>
+<p><strong>Restart Fish</strong><br>
+bash<br>
+enter<br>
+<code>exec fish</code></p>
+<ol start="3">
+<li></li>
+</ol>
+<hr>
+<h3 id="tldr">
+  <strong>TL;DR</strong>
+  <a class="anchor" href="#tldr">#</a>
+</h3>
+<ul>
+<li><strong>Bash</strong> → Works as is (guide is fine).</li>
+<li><strong>Zsh</strong> → Needs <code>source $HOME/.atuin/bin/env</code> in <code>~/.zshrc</code>.</li>
+<li><strong>Fish</strong> → Needs <code>source $HOME/.atuin/bin/env.fish</code> in <code>~/.config/fish/config.fish</code>.</li>
+</ul>
+<p>Would you like help setting up Zsh or Fish instead of Bash? 🚀</p>
+<p><strong>BUT WAIT THERE IS MORE</strong></p>
+<p>You said:<br>
+I have installed bash-completion and atuin on my proxmox, a Debian-based server. Can I add some basic upgrades to the base bash prompt that will be useful? I don&rsquo;t want to install Fish on all my servers since Bash is supported out of the box in all of them.</p>
+<h6 id="chatgpt-said">
+  ChatGPT said:
+  <a class="anchor" href="#chatgpt-said">#</a>
+</h6>
+<p>Great call sticking with Bash—it keeps things consistent across all your servers without needing extra dependencies like Fish. Here are some practical Bash prompt upgrades that enhance usability, improve readability, and make working in the terminal more efficient.</p>
+<hr>
+<h2 id="1-add-git-status-to-your-prompt-if-you-use-git">
+  <strong>1️⃣ Add Git Status to Your Prompt (If You Use Git)</strong>
+  <a class="anchor" href="#1-add-git-status-to-your-prompt-if-you-use-git">#</a>
+</h2>
+<p><strong>If you work with Git repositories, showing the branch and status in your prompt is helpful. Add this to <code>~/.bashrc</code>:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>parse_git_branch() {</code></strong><br>
+<strong><code>git branch 2&gt;/dev/null | grep '*' | sed 's/* //'</code></strong><br>
+<strong><code>}</code></strong></p>
+<p><strong><code>export PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[1;33m\] $(parse_git_branch)\[\e[0m\]\$ '</code></strong></p>
+<h3 id="what-this-does">
+  <strong>What This Does:</strong>
+  <a class="anchor" href="#what-this-does">#</a>
+</h3>
+<p><strong>✅ Shows username and hostname in green</strong><br>
+<strong>✅ Shows the working directory in blue</strong><br>
+<strong>✅ Displays the current Git branch in yellow (if inside a Git repo)</strong></p>
+<hr>
+<h2 id="2-show-exit-code-of-last-command-only-if-it-fails">
+  <strong>2️⃣ Show Exit Code of Last Command (Only if it Fails)</strong>
+  <a class="anchor" href="#2-show-exit-code-of-last-command-only-if-it-fails">#</a>
+</h2>
+<p><strong>Sometimes, you run a command, and it fails—this makes it obvious by displaying the exit code in red.</strong></p>
+<p><strong>Add this function to <code>~/.bashrc</code>:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>show_exit_code() {</code></strong><br>
+<strong><code>EXIT_CODE=$?</code></strong><br>
+<strong><code>if [ $EXIT_CODE -ne 0 ]; then</code></strong><br>
+<strong><code>echo -e &quot;\e[1;31mExit Code: $EXIT_CODE\e[0m&quot;</code></strong><br>
+<strong><code>fi</code></strong><br>
+<strong><code>}</code></strong><br>
+<strong><code>export PROMPT_COMMAND=&quot;show_exit_code; $PROMPT_COMMAND&quot;</code></strong></p>
+<h3 id="what-this-does-1">
+  <strong>What This Does:</strong>
+  <a class="anchor" href="#what-this-does-1">#</a>
+</h3>
+<p><strong>✅ If the last command fails, it will display:</strong><br>
+<strong>Exit Code: 1 (or whatever the exit code is)</strong><br>
+<strong>✅ If the last command succeeds, nothing changes</strong></p>
+<hr>
+<h2 id="3-add-timestamps-to-your-history">
+  <strong>3️⃣ Add Timestamps to Your History</strong>
+  <a class="anchor" href="#3-add-timestamps-to-your-history">#</a>
+</h2>
+<p><strong>Bash normally saves commands without timestamps. Enable timestamps so you can see when each command was run.</strong></p>
+<p><strong>Add this to <code>~/.bashrc</code>:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>export HISTTIMEFORMAT=&quot;%F %T &quot;</code></strong></p>
+<h3 id="what-this-does-2">
+  <strong>What This Does:</strong>
+  <a class="anchor" href="#what-this-does-2">#</a>
+</h3>
+<p><strong>✅ <code>history</code> now shows timestamps like:</strong></p>
+<p><strong>yaml</strong><br>
+<strong>enter</strong><br>
+<strong><code>1  2024-02-14 12:30:45 sudo apt update</code></strong><br>
+<strong><code>2  2024-02-14 12:31:12 ls -la</code></strong></p>
+<hr>
+<h2 id="4-make-your-prompt-show-the-last-command-execution-time">
+  <strong>4️⃣ Make Your Prompt Show the Last Command Execution Time</strong>
+  <a class="anchor" href="#4-make-your-prompt-show-the-last-command-execution-time">#</a>
+</h2>
+<p><strong>Ever run a command and wonder how long it took? This adds execution time info to your prompt.</strong></p>
+<p><strong>Add this to <code>~/.bashrc</code>:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>export PROMPT_COMMAND='LAST_CMD_TIME=$SECONDS; PREV_LAST_CMD_TIME=$LAST_CMD_TIME; $PROMPT_COMMAND'</code></strong><br>
+<strong><code>export PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\] (\[\e[1;35m\]${PREV_LAST_CMD_TIME}s\[\e[0m\])\$ '</code></strong></p>
+<h3 id="what-this-does-3">
+  <strong>What This Does:</strong>
+  <a class="anchor" href="#what-this-does-3">#</a>
+</h3>
+<p><strong>✅ Shows execution time of the last command in purple</strong><br>
+<strong>✅ If the last command took 5 seconds, prompt will look like:</strong></p>
+<p><strong>ruby</strong><br>
+<strong>enter</strong><br>
+<strong><code>user@server:~/folder (5s)$</code></strong></p>
+<p><strong>✅ If the command was instant, the (0s) disappears</strong></p>
+<hr>
+<h2 id="5-enable-persistent-history-across-sessions">
+  <strong>5️⃣ Enable Persistent History Across Sessions</strong>
+  <a class="anchor" href="#5-enable-persistent-history-across-sessions">#</a>
+</h2>
+<p><strong>By default, Bash only saves history at the end of a session, meaning if multiple terminals are open, they don’t share history. Fix this:</strong></p>
+<p><strong>Add this to <code>~/.bashrc</code>:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>shopt -s histappend</code></strong><br>
+<strong><code>PROMPT_COMMAND=&quot;history -a; history -c; history -r; $PROMPT_COMMAND&quot;</code></strong></p>
+<h3 id="what-this-does-4">
+  <strong>What This Does:</strong>
+  <a class="anchor" href="#what-this-does-4">#</a>
+</h3>
+<p><strong>✅ Instantly saves each command you run to history</strong><br>
+<strong>✅ History is shared across multiple terminals (so all sessions see the latest commands)</strong><br>
+<strong>✅ Prevents history loss when multiple terminal windows are open</strong></p>
+<hr>
+<h2 id="6-enable-better-navigation-ctrlarrow-for-word-jumps">
+  <strong>6️⃣ Enable Better Navigation (Ctrl+Arrow for Word Jumps)</strong>
+  <a class="anchor" href="#6-enable-better-navigation-ctrlarrow-for-word-jumps">#</a>
+</h2>
+<p><strong>By default, Bash doesn’t let you jump word by word using <code>Ctrl+←</code> and <code>Ctrl+→</code> like in most modern shells.</strong></p>
+<p><strong>Add this to <code>~/.inputrc</code> (create the file if it doesn&rsquo;t exist):</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>&quot;\e[1;5D&quot;: backward-word</code></strong><br>
+<strong><code>&quot;\e[1;5C&quot;: forward-word</code></strong></p>
+<h3 id="what-this-does-5">
+  <strong>What This Does:</strong>
+  <a class="anchor" href="#what-this-does-5">#</a>
+</h3>
+<p><strong>✅ Ctrl+← jumps back one word</strong><br>
+<strong>✅ Ctrl+→ jumps forward one word</strong><br>
+<strong>✅ Makes navigation faster when editing long commands</strong></p>
+<hr>
+<h2 id="7-shorten-your-prompt-on-long-paths">
+  <strong>7️⃣ Shorten Your Prompt on Long Paths</strong>
+  <a class="anchor" href="#7-shorten-your-prompt-on-long-paths">#</a>
+</h2>
+<p><strong>By default, if you&rsquo;re deep inside a directory, your prompt gets very long. Fix this by shortening the path.</strong></p>
+<p><strong>Add this function to <code>~/.bashrc</code>:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>export PS1='\u@\h:\w$( [ ${#PWD} -gt 40 ] &amp;&amp; echo &quot;…${PWD: -20}&quot;)\$ '</code></strong></p>
+<h3 id="what-this-does-6">
+  <strong>What This Does:</strong>
+  <a class="anchor" href="#what-this-does-6">#</a>
+</h3>
+<p><strong>✅ Shortens the displayed path if it&rsquo;s longer than 40 characters</strong><br>
+<strong>✅ Example:</strong></p>
+<p><strong>ruby</strong><br>
+<strong>enter</strong><br>
+<strong><code>user@server:/home/user/projects/super-long-directory-name$ # Normal</code></strong><br>
+<strong><code>user@server:…per-long-directory-name$ # Shortened</code></strong></p>
+<hr>
+<h2 id="8-improve-cd-behavior-auto-push-to-stack">
+  <strong>8️⃣ Improve &ldquo;cd&rdquo; Behavior (Auto Push to Stack)</strong>
+  <a class="anchor" href="#8-improve-cd-behavior-auto-push-to-stack">#</a>
+</h2>
+<p><strong>Make <code>cd -</code> work like a stack so you can jump back to previous directories easily.</strong></p>
+<p><strong>Add this to <code>~/.bashrc</code>:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>cd() {</code></strong><br>
+<strong><code>builtin cd &quot;$@&quot; || return</code></strong><br>
+<strong><code>pwd &gt; ~/.lastdir</code></strong><br>
+<strong><code>}</code></strong><br>
+<strong><code>alias -- -='cd &quot;$(cat ~/.lastdir)&quot;'</code></strong></p>
+<h3 id="what-this-does-7">
+  <strong>What This Does:</strong>
+  <a class="anchor" href="#what-this-does-7">#</a>
+</h3>
+<p><strong>✅ Every time you <code>cd</code> into a directory, it remembers the previous one</strong><br>
+<strong>✅ Typing <code>-</code> jumps back to the last directory</strong><br>
+<strong>✅ Example:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>cd /var/log</code></strong><br>
+<strong><code>cd /etc</code></strong><br>
+<strong><code>-</code></strong><br>
+<strong><code># Now you're back in /var/log!</code></strong></p>
+<hr>
+<h2 id="final-steps-apply-the-changes">
+  <strong>Final Steps: Apply the Changes</strong>
+  <a class="anchor" href="#final-steps-apply-the-changes">#</a>
+</h2>
+<p><strong>After making changes to <code>~/.bashrc</code>, apply them with:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>source ~/.bashrc</code></strong></p>
+<p><strong>If you edited <code>~/.inputrc</code>, apply changes with:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>bind -f ~/.inputrc</code></strong></p>
+<hr>
+<h3 id="-tldr---what-these-enhancements-do">
+  <strong>📌 TL;DR - What These Enhancements Do</strong>
+  <a class="anchor" href="#-tldr---what-these-enhancements-do">#</a>
+</h3>
+<p><strong>✔ Adds Git branch status to your prompt</strong><br>
+<strong>✔ Shows exit codes for failed commands</strong><br>
+<strong>✔ Saves timestamps in history</strong><br>
+<strong>✔ Displays execution time for commands</strong><br>
+<strong>✔ Keeps Bash history persistent across sessions</strong><br>
+<strong>✔ Enables Ctrl+← / Ctrl+→ word jumps</strong><br>
+<strong>✔ Shortens long paths in the prompt</strong><br>
+<strong>✔ Improves <code>cd -</code> navigation</strong></p>
+<hr>
+<p><strong>These upgrades keep Bash lightweight but powerful, giving you some of Fish/Zsh&rsquo;s best features without adding new dependencies.</strong></p>
+<p><strong>Would you like a specific feature customized further? 🚀</strong></p>
+<h5 id="you-said">
+  <strong>You said:</strong>
+  <a class="anchor" href="#you-said">#</a>
+</h5>
+<p><strong>this only keeps them current for the current session though right?</strong></p>
+<h6 id="chatgpt-said-1">
+  <strong>ChatGPT said:</strong>
+  <a class="anchor" href="#chatgpt-said-1">#</a>
+</h6>
+<p><strong>You&rsquo;re correct—if you add these changes to <code>~/.bashrc</code> and just run <code>source ~/.bashrc</code>, they&rsquo;ll only apply to the current session. However, once they are saved in <code>~/.bashrc</code>, they persist across reboots and new SSH sessions automatically.</strong></p>
+<p><strong>To ensure all changes always apply in every new terminal session, just do this once:</strong></p>
+<ol>
+<li><strong>Make sure everything is in <code>~/.bashrc</code></strong><br>
+<strong>If you’ve added the changes to <code>~/.bashrc</code>, they will persist across all future SSH sessions and logins. You don’t need to manually <code>source ~/.bashrc</code> every time—you just need to restart your shell or open a new terminal.</strong></li>
+</ol>
+<p><strong>For Immediate Effect in Current Session</strong><br>
+<strong>After editing <code>~/.bashrc</code>, run:</strong><br>
+<strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>source ~/.bashrc</code></strong></p>
+<ol start="2">
+<li><strong>This ensures the changes take effect immediately without needing to restart your shell.</strong></li>
+<li><strong>For Changes in All New Terminals or SSH Sessions</strong><br>
+<strong>The next time you open a new terminal or SSH into the server, these settings will already be applied. You do not need to run anything again.</strong></li>
+</ol>
+<hr>
+<h3 id="exceptions-where-it-wont-persist">
+  <strong>Exceptions Where It Won’t Persist</strong>
+  <a class="anchor" href="#exceptions-where-it-wont-persist">#</a>
+</h3>
+<ol>
+<li><strong>If you edit only <code>~/.bash_profile</code> instead of <code>~/.bashrc</code></strong>
+<ul>
+<li><strong><code>~/.bash_profile</code> runs only for login shells (like when logging in via SSH), but not for interactive shells (like opening a new terminal from an already logged-in session).</strong></li>
+<li><strong>Solution: Always put changes in <code>~/.bashrc</code> for consistency.</strong></li>
+</ul>
+</li>
+<li><strong>If you use <code>su -</code> instead of <code>su</code></strong>
+<ul>
+<li><strong><code>su -</code> loads a clean environment without user-specific configs.</strong></li>
+</ul>
+</li>
+</ol>
+<p><strong>Solution: If switching users, explicitly source the file:</strong><br>
+<strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>source ~/.bashrc</code></strong></p>
+<ul>
+<li></li>
+</ul>
+<ol start="3">
+<li><strong>If your shell is not Bash</strong>
+<ul>
+<li><strong>If you’re using Zsh or Fish, <code>~/.bashrc</code> won’t be loaded.</strong></li>
+<li><strong>Solution: Modify <code>~/.zshrc</code> or <code>~/.config/fish/config.fish</code> instead.</strong></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="to-apply-changes-system-wide-all-users">
+  <strong>To Apply Changes System-Wide (All Users)</strong>
+  <a class="anchor" href="#to-apply-changes-system-wide-all-users">#</a>
+</h3>
+<p><strong>If you want these prompt improvements for all users on the system, instead of just your account:</strong></p>
+<p><strong>Edit the global Bash configuration:</strong><br>
+<strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>sudo nano /etc/bash.bashrc</code></strong></p>
+<ol>
+<li></li>
+<li><strong>Add the same prompt modifications inside that file.</strong></li>
+<li><strong>Save and exit (<code>Ctrl+X</code>, then <code>Y</code>, then <code>Enter</code>).</strong></li>
+</ol>
+<p><strong>Apply changes immediately:</strong><br>
+<strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>source /etc/bash.bashrc</code></strong></p>
+<ol start="4">
+<li></li>
+</ol>
+<hr>
+<h3 id="tldr-1">
+  <strong>TL;DR</strong>
+  <a class="anchor" href="#tldr-1">#</a>
+</h3>
+<ul>
+<li><strong>If added to <code>~/.bashrc</code>, changes persist for your user across reboots and SSH sessions.</strong></li>
+<li><strong>If added to <code>/etc/bash.bashrc</code>, changes persist system-wide for all users.</strong></li>
+<li><strong>After editing, <code>source ~/.bashrc</code> makes changes apply immediately without restarting.</strong></li>
+</ul>
+<p><strong>Would you like help setting this up across multiple servers at once? 🚀</strong></p>
+<h5 id="you-said-1">
+  <strong>You said:</strong>
+  <a class="anchor" href="#you-said-1">#</a>
+</h5>
+<p><strong>how do I add the first one for example to ~/.bashrc and make it persistent?</strong></p>
+<h6 id="chatgpt-said-2">
+  <strong>ChatGPT said:</strong>
+  <a class="anchor" href="#chatgpt-said-2">#</a>
+</h6>
+<p><strong>Great question! Let&rsquo;s go step by step to add the Git branch status to your Bash prompt and make sure it persists across all future sessions.</strong></p>
+<hr>
+<h3 id="step-1-open-bashrc-for-editing">
+  <strong>Step 1: Open <code>~/.bashrc</code> for Editing</strong>
+  <a class="anchor" href="#step-1-open-bashrc-for-editing">#</a>
+</h3>
+<p><strong>Run the following command to open your Bash configuration file in <code>nano</code>:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>nano ~/.bashrc</code></strong></p>
+<hr>
+<h3 id="step-2-add-the-git-branch-function-to-your-prompt">
+  <strong>Step 2: Add the Git Branch Function to Your Prompt</strong>
+  <a class="anchor" href="#step-2-add-the-git-branch-function-to-your-prompt">#</a>
+</h3>
+<p><strong>Scroll to the bottom of the file (using the arrow keys) and add this code:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code># Function to show the current Git branch</code></strong><br>
+<strong><code>parse_git_branch() {</code></strong><br>
+<strong><code>git branch 2&gt;/dev/null | grep '*' | sed 's/* //'</code></strong><br>
+<strong><code>}</code></strong></p>
+<p><strong><code># Custom Bash Prompt with Git Branch</code></strong><br>
+<strong><code>export PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[1;33m\] $(parse_git_branch)\[\e[0m\]\$ '</code></strong></p>
+<hr>
+<h3 id="step-3-save-the-file-and-exit">
+  <strong>Step 3: Save the File and Exit</strong>
+  <a class="anchor" href="#step-3-save-the-file-and-exit">#</a>
+</h3>
+<ol>
+<li><strong>Press <code>CTRL + X</code> to exit <code>nano</code>.</strong></li>
+<li><strong>Press <code>Y</code> to confirm saving changes.</strong></li>
+<li><strong>Press <code>Enter</code> to save and exit.</strong></li>
+</ol>
+<hr>
+<h3 id="step-4-apply-the-changes-immediately">
+  <strong>Step 4: Apply the Changes Immediately</strong>
+  <a class="anchor" href="#step-4-apply-the-changes-immediately">#</a>
+</h3>
+<p><strong>Run this command to reload the <code>~/.bashrc</code> file without logging out:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>source ~/.bashrc</code></strong></p>
+<hr>
+<h3 id="step-5-verify-that-it-works">
+  <strong>Step 5: Verify That It Works</strong>
+  <a class="anchor" href="#step-5-verify-that-it-works">#</a>
+</h3>
+<p><strong>Navigate to a directory that contains a Git repository:</strong><br>
+<strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>cd /path/to/git-repo</code></strong></p>
+<ol>
+<li></li>
+</ol>
+<p><strong>Check if the Git branch name appears in your prompt. If you&rsquo;re inside a Git repo, it should now display:</strong><br>
+<strong>ruby</strong><br>
+<strong>enter</strong><br>
+<strong><code>user@server:/path/to/repo main$</code></strong></p>
+<ol start="2">
+<li><strong>Where <code>main</code> (or <code>master</code>) is the branch name.</strong></li>
+</ol>
+<hr>
+<h3 id="step-6-make-sure-it-works-in-new-ssh-sessions">
+  <strong>Step 6: Make Sure It Works in New SSH Sessions</strong>
+  <a class="anchor" href="#step-6-make-sure-it-works-in-new-ssh-sessions">#</a>
+</h3>
+<ul>
+<li><strong>Close your terminal and open a new one.</strong></li>
+<li><strong>SSH back into your server and check if the Git branch appears.</strong></li>
+<li><strong>If it does, your custom Bash prompt persists across all sessions!</strong></li>
+</ul>
+<hr>
+<h3 id="bonus-make-it-system-wide-all-users">
+  <strong>Bonus: Make It System-Wide (All Users)</strong>
+  <a class="anchor" href="#bonus-make-it-system-wide-all-users">#</a>
+</h3>
+<p><strong>If you want all users on your server to have this Git-enabled prompt, edit the global Bash config:</strong></p>
+<p><strong>bash</strong><br>
+<strong>enter</strong><br>
+<strong><code>sudo nano /etc/bash.bashrc</code></strong></p>
+<p><strong>Then, add the same function and PS1 line to the bottom of the file. Save and exit, then apply:</strong></p>
+<p><strong>bash</strong></p>
+<hr>
+<p><strong><code>source /etc/bash.bashrc</code></strong></p>
+<p><strong>Now, every user on the system will have this prompt!</strong></p>
+<hr>
+<h3 id="youre-done-">
+  <strong>You&rsquo;re Done! 🎉</strong>
+  <a class="anchor" href="#youre-done-">#</a>
+</h3>
+<p><strong>This Git-enhanced Bash prompt will now persist across reboots and all SSH sessions.</strong></p>
+<p><strong>Would you like to tweak it further? Maybe add colors or execution time? 🚀</strong></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#step-by-step-plan-for-setting-up-bash-completion-and-atuin-in-new-vms"><strong>Step-by-Step Plan for Setting Up Bash Completion and Atuin in New VMs</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#step-1-update-the-system"><strong>Step 1: Update the System</strong></a></li>
+    <li><a href="#step-2-install-required-tools"><strong>Step 2: Install Required Tools</strong></a></li>
+    <li><a href="#step-3-install-bash-completion"><strong>Step 3: Install Bash Completion</strong></a></li>
+    <li><a href="#step-4-install-atuin"><strong>Step 4: Install Atuin</strong></a></li>
+    <li><a href="#step-5-enable-atuin-in-every-ssh-session"><strong>Step 5: Enable Atuin in Every SSH Session</strong></a></li>
+    <li><a href="#step-6-test-everything"><strong>Step 6: Test Everything</strong></a>
+      <ul>
+        <li><a href="#test-bash-completion"><strong>Test Bash Completion</strong></a></li>
+        <li><a href="#test-atuin"><strong>Test Atuin</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#step-7-repeat-for-every-new-vm"><strong>Step 7: Repeat for Every New VM</strong></a>
+      <ul>
+        <li><a href="#summary-of-commands"><strong>Summary of Commands</strong></a></li>
+        <li><a href="#shell-compatibility"><strong>Shell Compatibility:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#if-using-zsh"><strong>If Using Zsh</strong></a></li>
+    <li><a href="#if-using-fish"><strong>If Using Fish</strong></a>
+      <ul>
+        <li><a href="#tldr"><strong>TL;DR</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#1-add-git-status-to-your-prompt-if-you-use-git"><strong>1️⃣ Add Git Status to Your Prompt (If You Use Git)</strong></a>
+      <ul>
+        <li><a href="#what-this-does"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#2-show-exit-code-of-last-command-only-if-it-fails"><strong>2️⃣ Show Exit Code of Last Command (Only if it Fails)</strong></a>
+      <ul>
+        <li><a href="#what-this-does-1"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#3-add-timestamps-to-your-history"><strong>3️⃣ Add Timestamps to Your History</strong></a>
+      <ul>
+        <li><a href="#what-this-does-2"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#4-make-your-prompt-show-the-last-command-execution-time"><strong>4️⃣ Make Your Prompt Show the Last Command Execution Time</strong></a>
+      <ul>
+        <li><a href="#what-this-does-3"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#5-enable-persistent-history-across-sessions"><strong>5️⃣ Enable Persistent History Across Sessions</strong></a>
+      <ul>
+        <li><a href="#what-this-does-4"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#6-enable-better-navigation-ctrlarrow-for-word-jumps"><strong>6️⃣ Enable Better Navigation (Ctrl+Arrow for Word Jumps)</strong></a>
+      <ul>
+        <li><a href="#what-this-does-5"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#7-shorten-your-prompt-on-long-paths"><strong>7️⃣ Shorten Your Prompt on Long Paths</strong></a>
+      <ul>
+        <li><a href="#what-this-does-6"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#8-improve-cd-behavior-auto-push-to-stack"><strong>8️⃣ Improve &ldquo;cd&rdquo; Behavior (Auto Push to Stack)</strong></a>
+      <ul>
+        <li><a href="#what-this-does-7"><strong>What This Does:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#final-steps-apply-the-changes"><strong>Final Steps: Apply the Changes</strong></a>
+      <ul>
+        <li><a href="#-tldr---what-these-enhancements-do"><strong>📌 TL;DR - What These Enhancements Do</strong></a></li>
+        <li><a href="#exceptions-where-it-wont-persist"><strong>Exceptions Where It Won’t Persist</strong></a></li>
+        <li><a href="#to-apply-changes-system-wide-all-users"><strong>To Apply Changes System-Wide (All Users)</strong></a></li>
+        <li><a href="#tldr-1"><strong>TL;DR</strong></a></li>
+        <li><a href="#step-1-open-bashrc-for-editing"><strong>Step 1: Open <code>~/.bashrc</code> for Editing</strong></a></li>
+        <li><a href="#step-2-add-the-git-branch-function-to-your-prompt"><strong>Step 2: Add the Git Branch Function to Your Prompt</strong></a></li>
+        <li><a href="#step-3-save-the-file-and-exit"><strong>Step 3: Save the File and Exit</strong></a></li>
+        <li><a href="#step-4-apply-the-changes-immediately"><strong>Step 4: Apply the Changes Immediately</strong></a></li>
+        <li><a href="#step-5-verify-that-it-works"><strong>Step 5: Verify That It Works</strong></a></li>
+        <li><a href="#step-6-make-sure-it-works-in-new-ssh-sessions"><strong>Step 6: Make Sure It Works in New SSH Sessions</strong></a></li>
+        <li><a href="#bonus-make-it-system-wide-all-users"><strong>Bonus: Make It System-Wide (All Users)</strong></a></li>
+        <li><a href="#youre-done-"><strong>You&rsquo;re Done! 🎉</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
